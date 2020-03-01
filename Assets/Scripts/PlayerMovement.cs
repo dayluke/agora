@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float yForce = 1f;
+    [SerializeField] private float jumpForce = 1f;
     [SerializeField] private float resistanceDrag = 10f;
     private Rigidbody rb;
 
@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Vector3 movementInput = GetMovement();
-        rb.velocity = transform.TransformDirection(movementInput);
+        rb.velocity = movementInput;
     }
 
     private Vector3 GetMovement()
@@ -34,11 +34,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            return yForce;
+            return jumpForce; // IsGrounded...
         }
         else if (Input.GetKey(KeyCode.LeftShift))
         {
-            return -yForce;
+            return -jumpForce;
         }
         else
         {
