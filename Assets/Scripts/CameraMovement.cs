@@ -14,6 +14,8 @@ public class CameraMovement : MonoBehaviour
     
     private void Update()
     {
+        if (!PlayerMovement.inputEnabled) return;
+        
         Vector3 mouseInput = GetMouseInput();
 
         // Y axis rotation (Player)

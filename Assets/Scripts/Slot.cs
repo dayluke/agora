@@ -40,38 +40,18 @@ public class Slot : MonoBehaviour
         if (storage == StorageType.CHEST)
         {
             // If a chest slot was clicked, then try and send the item to inventory
-            try
-            {
-                return GameObject.Find("Inventory").transform;
-            }
-            catch
-            {
-                return GameObject.Find("Hot Bar").transform;
-            }
+            return PlayerHUD.inventory.transform;
         }
         else if (storage == StorageType.INVENTORY)
         {
             // If an inventory slot was clicked, then try and send the item to chest
-            try 
-            {
-                return GameObject.Find("Chest").transform;
-            }
-            catch
-            {
-                return GameObject.Find("Hot Bar").transform;
-            }
+            // return GameObject.Find("Chest").transform;
+            return PlayerHUD.hotbar.transform;
         }
         else if (storage == StorageType.HOTBAR)
         {
             // If a hotbar slot was clicked, then try and send the item to inventory
-            try
-            {
-               return GameObject.Find("Inventory").transform;    
-            }
-            catch
-            {
-                return GameObject.Find("Chest").transform;
-            }
+            return PlayerHUD.inventory.transform;
         }
         return null;
     }

@@ -59,6 +59,7 @@ public class Storage : MonoBehaviour
         {
             for (int j = 0; j < colCount; j++)
             {
+                Debug.LogFormat("CHECKING SLOT {0}|{1} in {2}", i, j, gameObject.name);
                 if (transform.GetChild(i).GetChild(j).GetComponent<Slot>().IsSlotEmpty())
                 {
                     return transform.GetChild(i).GetChild(j);

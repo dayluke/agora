@@ -6,16 +6,24 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpForce = 1f;
     [SerializeField] private float resistanceDrag = 10f;
+    public static bool inputEnabled = true;
     private Rigidbody rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        CursorHandler.ToggleCursor(false);
     }
 
     private void Update()
     {
-        Vector3 movementInput = GetMovement();
+        if (!inputEnabled)
+        {
+            rb.velocity = Vector3.zero;
+            return;
+        }
+
+        Vector3 movementInput = transform.TransformDirection(GetMovement());
         rb.velocity = movementInput;
     }
 
