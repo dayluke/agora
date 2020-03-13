@@ -36,6 +36,8 @@ public class Storage : MonoBehaviour
                 Instantiate(slotPrefab, rowGO.transform);
             }
         }
+
+        if (storageType == StorageType.INVENTORY) gameObject.SetActive(false);
     }
 
     private void SetupColumn(HorizontalLayoutGroup hlg)
